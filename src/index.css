@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0f0a08;
+  color: #f5e6d3;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+}
+
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #2c1810; }
+::-webkit-scrollbar-thumb { background: #3d2215; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #8b5e3c; }
+
+.glow-gold {
+  box-shadow: 0 0 24px rgba(196, 149, 106, 0.25), 0 0 48px rgba(196, 149, 106, 0.08);
+}
+.glow-sm {
+  box-shadow: 0 0 12px rgba(196, 149, 106, 0.15);
+}
+
+.progress-ring-bg { stroke: #3d2215; }
+.progress-ring-fill {
+  stroke: #c4956a;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.habit-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.habit-card:hover {
+  transform: translateY(-1px);
+}
+.habit-card.completed {
+  box-shadow: 0 0 16px rgba(196, 149, 106, 0.2);
+}
+
+@keyframes levelUp {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+.level-up-anim {
+  animation: levelUp 0.5s ease;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #c4956a 25%, #f5e6d3 50%, #c4956a 75%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes pulse-ring {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
