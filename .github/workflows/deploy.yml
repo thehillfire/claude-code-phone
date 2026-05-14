@@ -6,12 +6,21 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Enable GitHub Pages
+        run: |
+          curl -s -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/pages \
+            -d '{"source":{"branch":"gh-pages","path":"/"}}' || true
 
       - uses: actions/setup-node@v4
         with:
